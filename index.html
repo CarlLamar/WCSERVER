@@ -1,31 +1,72 @@
-<!DOCTYPE html>
-<html lang ="en">
+<!DOCTYPE>
+<html>
     <head>
-	    <meta charset="UTF-8">
-		<meta http-equiv="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>File Upload</title>
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
-		<script src="http://cdnjs.cloudfare.com/ajax/libs/jquery.form/3.51/jquery.min.js"></script>
-		<script>
-		    $(document.ready(function(){
-			  $('#uploadForm').submit(function(){
-			    $("#status").empty().text("File is uploading...");
-				
-				$(this).ajaxSubmit({error: function(xhr){
-				    status('Error: '+ xhr.status);
-					}
-					});
-					return false;
-					});
-	});							
-	
-	</script>
-</head>
-<body>
-    <h1>Using Express.js to Demonstrate File Upload</h1>
-    <form id="uploadForm" enctype="multipart/form-data" action="/uploaded" method="post">
-	    <input type="file" name="myfile" multiple /> <br/>
-		<input type="submit" name="Upload Image" name=""submit"/> <br/>
-    </form>
-</body>	
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, inital scale = 1.0">
+        <script src="https://unpkg.com/vue@3.0.2"></script>
+        <title>Vue Js Demo Application</title>
+    </head>
+    <body>
+        <!--Create a div tag with app ID-->
+        <div id="app">
+        <p>{{ title }} - {{ author }} - {{ age }}</p>
+        <!-- Events on Vue v-on -->
+        <button v-on:click="age++">Get Older</button>
+        <button v-on:click="age--">Get Younger</button>
+        <button @click="title = 'The title has changed.'">Change Title</button>
+    
+    </div>
+
+        <!--Insert the below code to link to app.js-->
+        <script src="app.js"></script>
+        <h2>**********************************************************</h2>
+
+        <!--Two -Way Data Binding-->
+        <div id="two-way-binding">
+            <p>{{message}}</p>
+            <input v-model="message" />
+        </div>
+
+        <!--Link to twoway.js-->
+        <script src="two-way.js"></script>
+        <h2>**********************************************************</h2>
+
+        <!--Using v-if-->
+        <div id="conditional-rendering">
+            <span v-if="seen">Now you see me</span>
+        </div>
+
+        <!--link to conditionalif.js-->
+        <script src="conditionalif.js"></script>
+        <h2>**********************************************************</h2>
+
+        <!--This is hooked up to a method in the books.js-->
+        <div id="books">
+            <div v-if="showBooks">
+                <p>{{ btitle }} - {{ bauthor }} - {{ year }}</p>
+            </div>
+
+            <button @click='toggleShowBooks'>
+                <span v-if='showBooks'>Hide books</span>
+                <span v-else>Show Books</span>
+            </button>
+        </div>
+
+        <!--link to books.js-->
+        <script src="books.js"></script>
+        <h2>**********************************************************</h2>
+        <!--using v-for directive-->
+        <div id="list-rendering">
+            <ol>
+                <li v-for="todo in todos">
+                    {{todo.text}}
+                </li>
+            </ol>
+        </div>
+
+        <!--link to listfor.js-->
+        <script src="listfor.js"></script>
+        <h2>**********************************************************</h2>
+    </body>
+</html>
